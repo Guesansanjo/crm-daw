@@ -46,6 +46,9 @@
           <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
           </a>
+          <%# TODO: style log out %>
+          <%= link_to "Log out", destroy_user_session_path,data:{ "turbo-method": :delete}  %>
+
           <ul class="dropdown-menu text-small">
             <li><a class="dropdown-item" href="#">New project...</a></li>
             <li><a class="dropdown-item" href="#">Settings</a></li>
@@ -56,6 +59,7 @@
         </div>
 
         <% else %>
+          <%# TODO: style buttons and position %>
         <div class="d-block justify-content-end">
             <%= link_to "Register", new_user_registration_path, :class=>"btn btn-warning" %>
             <%= link_to "Log in", new_user_session_path, :class=>"btn btn-outline-dark me-2" %>
