@@ -1,14 +1,10 @@
 # CRM-DAW
 
-Esqueleto de la aplicación.
+Rspec setup :
 
-rails new . -T -d postgresql --css bootstrap
+bundle exec rails generate rspec:install
 
-Vamos a utilizar una stack rails a la antigua.
+Database create and migrate :
 
-Rails 
-Hotwire
-Stimulus
-Bootstrap
-
-
+rails db:create
+rails db:migrate
