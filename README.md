@@ -70,3 +70,15 @@ bundle exec rails db:migrate db:test:prepare
 ```
 bundle exec rails g devise:views 
 ```
+```
+ bundle exec rails g model board name:string user:references
+ ```
+
+ generamos board
+
+  bundle exec rails db:migrate db:test:prepare
+
+
+  TODO : ./boards/new.html.erb arreglar para que funcione el formulario con la routa post
+
+Puedo ver rutas tal que asi  bundle exec rails routes -c boards
