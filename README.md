@@ -82,3 +82,8 @@ bundle exec rails g devise:views
   TODO : ./boards/new.html.erb arreglar para que funcione el formulario con la routa post
 
 Puedo ver rutas tal que asi  bundle exec rails routes -c boards
+
+
+>Bug Rspec , factory aqui  solucion
+
+https://stackoverflow.com/questions/15211576/rspec-authenticating-devise-user-in-request-specs
