@@ -87,3 +87,9 @@ Puedo ver rutas tal que asi  bundle exec rails routes -c boards
 >Bug Rspec , factory aqui  solucion
 
 https://stackoverflow.com/questions/15211576/rspec-authenticating-devise-user-in-request-specs
+
+paginas de interes 
+
+https://henrytabima.github.io/rails-setup/docs/devise/test-helpers
+
+https://stevepolito.design/blog/
