@@ -11,9 +11,7 @@
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <li><a href="#" class="nav-link px-2 link-secondary">Overview</a></li>
-          <li><a href="#" class="nav-link px-2 link-dark">Inventory</a></li>
-          <li><a href="#" class="nav-link px-2 link-dark">Customers</a></li>
-          <li><a href="#" class="nav-link px-2 link-dark">Products</a></li>
+          <%= link_to "Dashboard",root_path,class: ""  %>
         </ul>
 
         <% end %>
@@ -27,11 +25,16 @@
              <%# TODO: style log out %>
           <%= link_to "Log out", destroy_user_session_path,data:{ "turbo-method": :delete}  %>
  <ul class="dropdown-menu text-small">
-            <li><a class="dropdown-item" href="#">New project...</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
+          
+
+               <%= link_to new_board_path , class:"" do %>
+        <li> New board  </li>
+        <% end %>
+          <li><hr class="dropdown-divider"></li>
+                       <%= link_to "Log out", destroy_user_session_path,data:{ "turbo-method": :delete}  %>
+    
+  
+       
           </ul>
 
            <%# TODO: style boards %>
