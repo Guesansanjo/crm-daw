@@ -1,5 +1,15 @@
 <p> yo my dude u are in da dashboards</p>
 
 <% @boards.each do |board| %>
-<%= board.name %>
+
+
+
+<div class="card w-50">
+  <div class="card-body">
+    <h5 class="card-title"><%= board.name %></h5>
+    <p class="card-text">Proyecto board<%= board.id %> </p>
+   
+  </div>
+</div>
+
 <% end %>
