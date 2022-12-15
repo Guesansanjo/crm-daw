@@ -2,13 +2,17 @@
 
 <% @boards.each do |board| %>
 
-
-
 <div class="card w-50">
   <div class="card-body">
     <h5 class="card-title"><%= board.name %></h5>
-    <p class="card-text">Proyecto board<%= board.id %> </p>
-    <a href="#" class="btn btn-primary">Button</a>
+
+ 
+        <%= link_to edit_board_path(board) , class:"btn btn-primary" do %>
+        <span> edit board  </span>
+        <% end %>
+
+
+
   </div>
 </div>
 

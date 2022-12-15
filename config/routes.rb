@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   # root "articles#index"
   root "home#index"
   get "dashboard", to: "dashboard#index"
-  resources :boards, only: [:new,:create]
+  resources :boards, only: [:new , :edit, :create, :update]
 end

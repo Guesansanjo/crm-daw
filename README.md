@@ -93,3 +93,7 @@ paginas de interes
 https://henrytabima.github.io/rails-setup/docs/devise/test-helpers
 
 https://stevepolito.design/blog/
+
+
+sacar los path bundle exec rails routes -c boards
+importante

@@ -52,3 +52,5 @@ end
 group :test do
   gem 'shoulda-matchers', '~> 5.2'
 end
+# gem "pundit"
+gem "pundit", "~> 2.2"
