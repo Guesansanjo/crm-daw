@@ -5,7 +5,7 @@ RSpec.describe BoardPolicy, type: :policy do
 
   subject { described_class }
 
-  permissions ".scope" do
+  permissions '.scope' do
   end
 
   permissions :show? do
