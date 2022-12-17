@@ -8,7 +8,6 @@ class BoardsController < ApplicationController
   end
 
   def edit
- 
     authorize board
   end
 
@@ -41,5 +40,4 @@ class BoardsController < ApplicationController
   def board
     @board ||= Board.find(params[:id])
   end
-  
 end

@@ -57,10 +57,10 @@ RSpec.describe 'Boards', type: :request do
         expect do
           put board_path(board), params: {
             board: {
-              name: "Updated Board"
+              name: 'Updated Board'
             }
           }
-        end.to change { board.reload.name }.to("Updated Board")
+        end.to change { board.reload.name }.to('Updated Board')
         expect(response).to have_http_status(:redirect)
       end
     end
@@ -69,7 +69,8 @@ RSpec.describe 'Boards', type: :request do
         expect do
           put board_path(board), params: {
             board: {
-              name: ""           }
+              name: ''
+            }
           }
         end.not_to change { board.reload.name }
         expect(response).to have_http_status(:success)
