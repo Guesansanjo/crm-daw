@@ -1,19 +1,16 @@
 <p> yo my dude u are in da dashboards</p>
-
 <% @boards.each do |board| %>
-
-<div class="card w-50">
-  <div class="card-body">
-    <h5 class="card-title"><%= board.name %></h5>
-
- 
-        <%= link_to edit_board_path(board) , class:"btn btn-primary" do %>
+  <div class="card w-50">
+    <div class="card-body">
+      <h5 class="card-title"><%= board.name %></h5>
+      <%= link_to edit_board_path(board) , class:"btn btn-primary" do %>
         <span> edit board  </span>
-        <% end %>
+      <% end %>
 
+       <%= link_to board_path(board) ,data:{"turbo-method": :delete} , class:"btn btn-primary" do %>
+        <span> delete board  </span>
+      <% end %>
 
-
+    </div>
   </div>
-</div>
-
 <% end %>

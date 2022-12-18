@@ -57,4 +57,8 @@ end
 # gem "pundit"
 gem 'pundit', '~> 2.2'
 gem 'rubocop', '~> 1.40'
+gem 'rubocop-rails', '~> 2.17', '>= 2.17.3'
+gem 'rubocop-rspec', '~> 2.16'
+gem 'htmlbeautifier', '~> 1.4', '>= 1.4.2'
 gem 'solargraph', '~> 0.47.2'
+

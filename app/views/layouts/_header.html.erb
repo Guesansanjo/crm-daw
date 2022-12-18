@@ -1,53 +1,39 @@
-
-
-  <nav class="p-3 mb-3 border-bottom">
-    <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
-          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
-        </a>
-
-        <% if user_signed_in? %>
-
+<nav class="p-3 mb-3 border-bottom">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+        <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
+      </a>
+      <% if user_signed_in? %>
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        
           <%= link_to "Dashboard",root_path,class: "nav-link px-2 link-secondary"  %>
         </ul>
-
-        <% end %>
-
-    <% if user_signed_in? %>
-
-      <div class="dropdown text-end">
+      <% end %>
+      <% if user_signed_in? %>
+        <div class="dropdown text-end">
           <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-
-             <%# TODO: style log out %>
-          <%= link_to "Log out", destroy_user_session_path,data:{ "turbo-method": :delete}  %>
- <ul class="dropdown-menu text-small">
-          
-
-               <%= link_to new_board_path , class:"" do %>
-        <li> New board  </li>
-        <% end %>
-          <li><hr class="dropdown-divider"></li>
-                       <%= link_to "Log out", destroy_user_session_path,data:{ "turbo-method": :delete}  %>
-    
-  
-       
-          </ul>
-
-           <%# TODO: style boards %>
-        <%= link_to new_board_path , class:"btn btn-outline-dark me-2" do %>
-        <span> New board  </span>
-        <% end %>
-        <% else %>
-          <%# TODO: style buttons and position %>
-        <div class="d-block justify-content-end">
-            <%= link_to "Register", new_user_registration_path, :class=>"btn btn-warning" %>
-            <%= link_to "Log in", new_user_session_path, :class=>"btn btn-outline-dark me-2" %>
+            <%# TODO: style log out %>
+            <%= link_to "Log out", destroy_user_session_path,data:{ "turbo-method": :delete}  %>
+            <ul class="dropdown-menu text-small">
+              <%= link_to new_board_path , class:"" do %>
+                <li> New board  </li>
+              <% end %>
+              <li><hr class="dropdown-divider"></li>
+              <%= link_to "Log out", destroy_user_session_path,data:{ "turbo-method": :delete}  %>
+            </ul>
+            <%# TODO: style boards %>
+            <%= link_to new_board_path , class:"btn btn-outline-dark me-2" do %>
+              <span> New board  </span>
+            <% end %>
+          <% else %>
+            <%# TODO: style buttons and position %>
+            <div class="d-block justify-content-end">
+              <%= link_to "Register", new_user_registration_path, :class=>"btn btn-warning" %>
+              <%= link_to "Log in", new_user_session_path, :class=>"btn btn-outline-dark me-2" %>
+            </div>
+          <% end %>
         </div>
-        <% end %>
-
-         </div>
+      </div>
+    </div>
   </nav>
