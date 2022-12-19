@@ -38,6 +38,7 @@ group :development, :test do
   gem 'faker'
   gem 'pry-rails', '~> 0.3.9'
   gem 'rspec-rails', '~> 6.0', '>= 6.0.1'
+  
 end
 
 group :development do
