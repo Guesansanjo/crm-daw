@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   # root "articles#index"
   root 'home#index'
   get 'dashboard', to: 'dashboard#index'
-  resources :boards, only: %i[new edit create update destroy]
+  resources :boards, only: %i[new edit show create update destroy]
 end
