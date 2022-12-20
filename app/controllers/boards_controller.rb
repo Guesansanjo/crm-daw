@@ -3,6 +3,8 @@
 class BoardsController < ApplicationController
   before_action :authenticate_user!
 
+  #GET /board.json
+
   def new
     @board = Board.new
   end
