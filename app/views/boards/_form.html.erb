@@ -11,9 +11,16 @@
   <div>
     <%= f.label :name, class:""%>
     <div>
-      <%= f.text_field :name, class:""%>
+      <%= f.text_field :name , class:"form-control-sm"%>
     </div>
   </div>
   <% link_to "Cancel" , root_path , class: ""%>
-  <%= f.submit "Submit" ,class:"btn btn-outline-dark me-2"%>
+ 
+  <div class="actions">
+  <%= link_to root_path  , class:"btn btn-sm btn-default rounded-0 mt-3" do %>
+            <span>Cancel</span>
+          <% end %>
+
+              <%= f.submit "Submit" , class:"btn btn-sm btn-default rounded-0 mt-3"%>
+            </div>
 <% end %>
