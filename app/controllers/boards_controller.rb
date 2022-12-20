@@ -6,10 +6,12 @@ class BoardsController < ApplicationController
   #GET /board.json
 
   def new
+    @should_render_header = true
     @board = Board.new
   end
 
   def edit
+    @should_render_header = true
     authorize board
   end
 

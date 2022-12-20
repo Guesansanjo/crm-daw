@@ -5,20 +5,14 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "/assets/application.js", "data-turbo-track": "reload", defer: true %>  
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "/assets/application.js", "data-turbo-track": "reload", defer: true %>
     <%= favicon_link_tag asset_path("alpine-icon.ico") %>
   </head>
-
   <body>
-  <%= render "layouts/header" if @should_render_header%>
+    <%= render "layouts/header" if @should_render_header%>
     <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  
-  
+    <p class="alert"><%= alert %></p>
     <%= yield %>
-  
-    
   </body>
 </html>
