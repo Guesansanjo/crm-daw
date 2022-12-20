@@ -1,1 +1,11 @@
 <p>Boards controller metodo show </p>
+ 
+
+  <h1><%= @board.name %></h1>
+
+  <%= link_to edit_board_path(@board) , class:"btn btn-sm btn-success rounded-0" do %>
+            <span>edit</span>
+          <% end %>
+   <%= link_to board_path(@board) ,data:{"turbo-method": :delete} , class:"btn btn-sm btn-danger rounded-0" do %>
+            <span>delete</span>
+          <% end %>

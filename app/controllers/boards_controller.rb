@@ -16,6 +16,7 @@ class BoardsController < ApplicationController
   end
 
   def show
+    @should_render_header = true
     authorize board
   end
 
