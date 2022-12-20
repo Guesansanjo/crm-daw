@@ -3,7 +3,7 @@
 class BoardsController < ApplicationController
   before_action :authenticate_user!
 
-  #GET /board.json
+  # GET /board.json
 
   def new
     @should_render_header = true

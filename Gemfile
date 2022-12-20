@@ -38,7 +38,6 @@ group :development, :test do
   gem 'faker'
   gem 'pry-rails', '~> 0.3.9'
   gem 'rspec-rails', '~> 6.0', '>= 6.0.1'
-  
 end
 
 group :development do
@@ -56,10 +55,9 @@ group :test do
   gem 'shoulda-matchers', '~> 5.2'
 end
 # gem "pundit"
+gem 'htmlbeautifier', '~> 1.4', '>= 1.4.2'
 gem 'pundit', '~> 2.2'
 gem 'rubocop', '~> 1.40'
 gem 'rubocop-rails', '~> 2.17', '>= 2.17.3'
 gem 'rubocop-rspec', '~> 2.16'
-gem 'htmlbeautifier', '~> 1.4', '>= 1.4.2'
 gem 'solargraph', '~> 0.47.2'
-

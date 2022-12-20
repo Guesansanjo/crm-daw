@@ -24,13 +24,12 @@ RSpec.describe 'Boards', type: :request do
     end
   end
 
-  describe "GET show" do
-    it'succeeds' do
+  describe 'GET show' do
+    it 'succeeds' do
       get board_path(board)
       expect(response).to have_http_status(:success)
     end
   end
-
 
   describe 'POST create' do
     context 'with valid params' do

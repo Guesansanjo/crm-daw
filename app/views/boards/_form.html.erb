@@ -15,12 +15,10 @@
     </div>
   </div>
   <% link_to "Cancel" , root_path , class: ""%>
- 
   <div class="actions">
-  <%= link_to root_path  , class:"btn btn-sm btn-default rounded-0 mt-3" do %>
-            <span>Cancel</span>
-          <% end %>
-
-              <%= f.submit "Submit" , class:"btn btn-sm btn-default rounded-0 mt-3"%>
-            </div>
+    <%= link_to root_path  , class:"btn btn-sm btn-default rounded-0 mt-3" do %>
+      <span>Cancel</span>
+    <% end %>
+    <%= f.submit "Submit" , class:"btn btn-sm btn-default rounded-0 mt-3"%>
+  </div>
 <% end %>
