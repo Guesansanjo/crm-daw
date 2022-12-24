@@ -3,6 +3,9 @@
 
   <h1><%= @board.name %></h1>
 
+  <h1><%= @board.created_at %></h1>
+    <h1><%= @board.updated_at %></h1>
+  <h1>created by user_id :<%= @board.user_id %></h1>
   <%= link_to edit_board_path(@board) , class:"btn btn-sm btn-success rounded-0" do %>
             <span>edit</span>
           <% end %>
