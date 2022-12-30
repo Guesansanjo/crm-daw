@@ -6,3 +6,6 @@ import { application } from "./application"
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+// Saber hacer conexion bien o F para conectar API js
+import BoardController from "./board_controller"
+application.register("board", BoardController)
