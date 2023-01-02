@@ -221,12 +221,12 @@ footer {
 }
 
 @keyframes append-animate {
-	from {
-		transform: translateY(-20px);
-	}
-	to {
-		transform: translateY(0px);
-	}
+    from {
+        transform: translateY(-20px);
+    }
+    to {
+        transform: translateY(0px);
+    }
 }
 
 .kanban-item:hover {
