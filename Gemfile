@@ -6,7 +6,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.1.3'
 gem 'cssbundling-rails'
 gem 'devise'
-gem 'jbuilder'
 gem 'jsbundling-rails'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
@@ -65,3 +64,4 @@ gem 'solargraph', '~> 0.47.2'
 
 
 gem "importmap-rails", "~> 1.1"
+gem 'jsonapi-serializer'
