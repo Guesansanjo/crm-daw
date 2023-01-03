@@ -4,5 +4,6 @@ import "@hotwired/turbo-rails"
 import "@hotwired/stimulus-loading"
 import "controllers"
 import "jkanban"
+import "axios"
 //=require_tree .
 
