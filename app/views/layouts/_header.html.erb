@@ -22,7 +22,9 @@
         <%= link_to "New Board", new_board_path , class:"nav-link px-2 link-dark" %>
         <li><a href="#" class="nav-link px-2 link-dark">Inventory</a></li>
         <li><a href="#" class="nav-link px-2 link-dark">Customers</a></li>
-        <%= link_to "Log out", destroy_user_session_path,data:{ "turbo-method": :delete} , class:"nav-link px-2 link-dark"  %>
+        
+        <%= link_to "Log out",destroy_user_session_path ,data:{"turbo-method": :delete} , class:"nav-link px-2 link-dark"  %>
+        <%= link_to 'Delete', destroy_user_session_path , data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }  , class:"nav-link px-2 link-dark" %>
       </ul>
     </div>
   </div>

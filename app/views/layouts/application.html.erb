@@ -6,8 +6,9 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    "application", :media => "all" %>
-    <%= javascript_include_tag "/assets/application.js", "data-turbo-track": "reload", defer: true %>
     <%= favicon_link_tag asset_path("alpine-icon.ico") %>
+    <%= javascript_importmap_tags %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
   <body>
     <%= render "layouts/header" if @should_render_header%>

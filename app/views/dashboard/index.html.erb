@@ -7,9 +7,10 @@
           <%= link_to edit_board_path(board) , class:"btn btn-sm btn-success rounded-0" do %>
             <span>edit</span>
           <% end %>
-          <%= link_to board_path(board) ,data:{"turbo-method": :delete} , class:"btn btn-sm btn-danger rounded-0" do %>
+          <%= link_to board_path(board) ,data:{ turbo_method: :delete, turbo_confirm: 'Are you sure?'} , class:"btn btn-sm btn-danger rounded-0" do %>
             <span>delete</span>
           <% end %>
+          
         </div>
       </div>
     </div>
