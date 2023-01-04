@@ -160,7 +160,6 @@ export default class extends Controller {
         propagationHandlers: [],                                         // the specified callback does not cancel the browser event. possible values: "click", "context"
     });
 
-    console.log('kanban', kanban);
 
 }
 }
