@@ -31,7 +31,7 @@ export default class extends Controller {
                 'id': get(board, 'id'),
                 'title': get(board, 'attributes.title'),
                 'class': this.buildClassList(get(board, 'attributes.class_list')),
-                'item': this.buildItems(get(board, 'relationships.items.data')),
+                'item': this.buildItems(get(board, 'attributes.items.data')),
             }
         });
     }
