@@ -1,12 +1,27 @@
 
 import { Controller } from "@hotwired/stimulus"
 import axios from "axios";
+import { map } from "lodash-es";
 
 export default class extends Controller {
     HEADERS = {'ACCEPT': 'application/json'};
+
+
+    buildBoards(boardsData){
+        map(boardsData['data'], () => {
+            console.log('board: ',board);
+    });
+    }
+
+    buildKanban(){
+
+    }
+
   connect() {
     axios.get('/api/boards/1/lists',{headers: this.HEADERS}).then((response) =>{
         console.log('list response: ', response);
+
+        this.buildBoards(response['data']);
     });
     const boards = [
         {

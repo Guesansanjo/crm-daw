@@ -64,3 +64,4 @@ gem 'solargraph', '~> 0.47.2'
 
 gem 'importmap-rails', '~> 1.1'
 gem 'jsonapi-serializer'
+gem 'rack-cors'
