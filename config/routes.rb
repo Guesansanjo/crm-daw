@@ -6,13 +6,13 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  root 'home#index'
-  get 'dashboard', to: 'dashboard#index'
+  root "home#index"
+  get "dashboard", to: "dashboard#index"
   resources :boards, only: %i[new edit show create update destroy]
 
   namespace :api do
     resources :boards do
-      resources :lists, only: :index, controller: 'lists'
+      resources :lists, only: :index, controller: "lists"
     end
   end
 end

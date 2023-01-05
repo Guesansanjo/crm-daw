@@ -5,12 +5,11 @@ RSpec.describe 'Api::Lists', type: :request do
   let(:board) { create(:board, user:) }
   let(:lists) { create_list(:list, 3, board:) }
 
-
   before do
     lists.each_with_index do |list, index|
       create_list(:item, 2, list:, title: "item #{index + 1}")
+    end
   end
-end
 
   describe 'GET index' do
     it 'succeeds' do
