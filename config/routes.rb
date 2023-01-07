@@ -8,7 +8,10 @@ Rails.application.routes.draw do
   # root "articles#index"
   root "home#index"
   get "dashboard", to: "dashboard#index"
-  resources :boards, only: %i[new edit show create update destroy]
+
+  resources :boards do
+    resources :lists
+  end
 
   namespace :api do
     resources :boards do
