@@ -23,6 +23,16 @@ class ListsController < ApplicationController
     @list = board.lists.find(params[:id])
   end
 
+  def update
+    @list = board.lists.find(params[:id])
+
+    if @list.update(list_params)
+      redirect_to board_path(board)
+    else
+      render :edit
+    end
+  end
+
   private
 
   def board
