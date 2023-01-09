@@ -5,7 +5,6 @@ class ListsController < ApplicationController
 
   protect_from_forgery with: :null_session, only: :destroy
 
-
   def new
     @should_render_header = true
     @list = board.lists.new
@@ -35,7 +34,6 @@ class ListsController < ApplicationController
       render :edit
     end
   end
-
 
   def destroy
     @list = board.lists.find(params[:id])
