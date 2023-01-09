@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ListSerializer
   include JSONAPI::Serializer
   attributes :title

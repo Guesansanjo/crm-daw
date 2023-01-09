@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Api::Lists', type: :request do
@@ -16,9 +18,9 @@ RSpec.describe 'Api::Lists', type: :request do
       get api_board_lists_path(board)
       expect(response).to have_http_status(:success)
       json_response = JSON.parse(response.body)
-      expect(json_response.dig('data').size).to eq(3)
-      json_response.dig('data').each do |list_data|
-        expect(list_data.dig('attributes','items', 'data').size).to eq(2)
+      expect(json_response['data'].size).to eq(3)
+      json_response['data'].each do |list_data|
+        expect(list_data.dig('attributes', 'items', 'data').size).to eq(2)
       end
     end
   end
