@@ -8,6 +8,7 @@ module Api
                 item = Item.find(item_data[:id])
                 item.position = item_data[:position]
               item.list_id = item_data[:list_id]
+              item
             end
             Item.import items, on_duplicate_key_update: { conflict_target: [:id], columns: [:position, :list_id]}
             render json: ItemSerializer.new(items).serializable_hash.to_json
@@ -17,7 +18,7 @@ module Api
           private
       
           def items_params
-            params.permit(items: [:id,:position,:list_id])
+            params.permit(items: [:id, :position, :list_id])
           end
         end
     end

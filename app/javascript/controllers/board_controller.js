@@ -107,9 +107,9 @@ export default class extends Controller {
   }
 
   buildItemData(items){
-  return map(items, (item) =>{´
+  return map(items, (item) =>{
     return { 
-  id: item.dataset.id,
+  id: item.dataset.eid,
   position: item.dataset.position,
   list_id: item.dataset.listId,}
   });
