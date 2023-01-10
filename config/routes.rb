@@ -20,9 +20,9 @@ Rails.application.routes.draw do
   namespace :api do
     resources :boards do
       resources :lists, only: %i[index], controller: 'lists'
-      resources :list_positions, only: [:index, :update], controller: 'list_positions'
+      resources :list_positions, only: %i[index update], controller: 'list_positions'
     end
     resources :item_positions, only: :update, controller: 'item_positions'
-    put "item_positions", to: "item_positions#update"
+    put 'item_positions', to: 'item_positions#update'
   end
 end

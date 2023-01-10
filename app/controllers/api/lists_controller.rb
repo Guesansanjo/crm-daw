@@ -8,7 +8,7 @@ module Api
 
       render json: ListSerializer.new(@lists).serializable_hash.to_json
     end
-    
+
     private
 
     def board
