@@ -1,11 +1,10 @@
 import { Controller } from "@hotwired/stimulus";
 import { Turbo } from "@hotwired/turbo-rails";
 import axios from "axios";
-import { get, map , sample } from "lodash-es";
+import { get, map } from "lodash-es";
 
 export default class extends Controller {
   HEADERS = { ACCEPT: "application/json" };
-  BACKGROUND_COLORS = ['bg-info', 'bg-primary', 'bg-secondary', 'bg-success', 'bg-warning', 'bg-danger', 'bg-dark'];
 
   getHeaderTitles(){
     return Array.from(document.getElementsByClassName('kanban-title-board'));
@@ -32,9 +31,9 @@ export default class extends Controller {
     button.textContent = 'x';
     button.addEventListener('click', (e) =>{
       e.preventDefault();
-      console.log('button clcicked with boardId: ' + boardId);
+      console.log('button clcicked with boardId: ' , boardId);
 
-      axios.delete(`${this.element.dataset.boardListsUrl}/${boardId}` , {
+      axios.delete(`${this.element.dataset.boardListsUrl}/${boardId}`,{
         headers: this.HEADERS
       }).then((_) => { 
           Turbo.visit(window.location.href);
@@ -71,7 +70,7 @@ export default class extends Controller {
 
 
   buildClassList(){
-    return `text-white, ${sample(this.BACKGROUND_COLORS)}`;
+    return `text-white, bg-primary`;
   }
 
 
@@ -80,6 +79,7 @@ export default class extends Controller {
       return {
         'id': get(item, 'id'),
         'title': get(item, 'attributes.title'),
+        'class': this.buildClassList(),
       };
     });
   }
@@ -102,11 +102,11 @@ export default class extends Controller {
       itemAddOptions: {
         enabled: true, // add a button to board for easy item creation                                     // position the button on footer
       },
-      click: () => {
+      buttonClick: () => {
         console.log('board clicked')
       },
       dragendBoard:  (el)=> {
-        axios.put(`${this.element.dataset.apiUrl}/${el.dataset.id}`, {
+        axios.put(`${this.element.dataset.listPositionsApiUrl}/${el.dataset.id}`, {
           position: el.dataset.order - 1
         },{
           headers: this.HEADERS
