@@ -1,0 +1,35 @@
+<div class = "container">
+  <%= form_with model: [@list,@item], local: true , class: "form-control" do |f|%>
+    <div>
+      <% if @item.new_record? %>
+        <h3>New item</h3>
+        <p> this creates a item</p>
+      <% else %>
+        <h3>Edit item <%= item.title %> </h3>
+        <p> this edits item </p>
+      <% end %>
+    </div>
+
+    <div>
+      <%= f.label :title, class:""%>
+      <div>
+        <%= f.text_field :title , class:"form-control-sm"%>
+      </div>
+    </div>
+
+  <div>
+      <%= f.label :description, class:""%>
+      <div>
+        <%= f.text_area :description , class:"form-control-sm"%>
+      </div>
+    </div>
+
+    <% link_to "Cancel" , root_path , class: ""%>
+    <div class="actions">
+      <%= link_to root_path  , class:"btn btn-sm btn-dark rounded-0 mt-3" do %>
+        <span>Cancel</span>
+      <% end %>
+      <%= f.submit "Submit" , class:"btn btn-sm btn-dark rounded-0 mt-3"%>
+    </div>
+  <% end %>
+</div>

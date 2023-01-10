@@ -95,6 +95,16 @@ export default class extends Controller {
     });
   }
 
+  updateListPosition(el){
+    axios.put(`${this.element.dataset.listPositionsApiUrl}/${el.dataset.id}`, {
+      position: el.dataset.order - 1
+    },{
+      headers: this.HEADERS
+    }).then((response) => {
+      console.log('response: ', response);
+  });
+  }
+
   buildKanban(boards) {
     new jKanban({
       element: `#${this.element.id}`, // selector of the kanban container
@@ -102,17 +112,12 @@ export default class extends Controller {
       itemAddOptions: {
         enabled: true, // add a button to board for easy item creation                                     // position the button on footer
       },
-      buttonClick: () => {
-        console.log('board clicked')
+      buttonClick: (el, boardId) => {
+        Turbo.visit(`/lists/${boardId}/items/new`);
       },
-      dragendBoard:  (el)=> {
-        axios.put(`${this.element.dataset.listPositionsApiUrl}/${el.dataset.id}`, {
-          position: el.dataset.order - 1
-        },{
-          headers: this.HEADERS
-        }).then((response) => {
-          console.log('response: ', response);
-      });
+      dragendBoard:  (el,boardId)=> {
+        this.updateListPosition(el);
+
     },
     });
   }

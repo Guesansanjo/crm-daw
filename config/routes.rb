@@ -13,6 +13,10 @@ Rails.application.routes.draw do
     resources :lists, except: :show
   end
 
+  resources :lists do
+    resources :items
+  end
+
   namespace :api do
     resources :boards do
       resources :lists, only: %i[index], controller: 'lists'
