@@ -5,4 +5,6 @@ import "@hotwired/stimulus-loading";
 import "controllers";
 import "jkanban";
 import "axios";
+import "bootstrap"
+import "@popperjs/core"
 //=require_tree .
