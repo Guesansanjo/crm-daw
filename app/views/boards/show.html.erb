@@ -1,14 +1,10 @@
-  <div data-controller ="board" data-api-url = "<%= api_board_lists_path(@board) %>"
+<div data-controller ="board" data-api-url = "<%= api_board_lists_path(@board) %>"
   data-board-lists-url = "<%= board_lists_path(@board) %>"
   data-list-positions-api-url = "<%= api_board_list_positions_path(@board) %>"
     data-item-positions-api-url = "<%= api_item_positions_path %>"
    id="board" style="overflow-x: scroll;" >
-   </div>
-
-
+</div>
 <!-- Button trigger modal -->
-
-
 <%= button_tag "" ,id:"try", class:"btn btn-primary d-none" ,data:{"bs-toggle": "modal" , "bs-target": "#exampleModal"} %>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -19,13 +15,10 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        
-<p>Title:</p>
-<p id="item-title"></p>
-
-<p>Description:</p>
-<p id="item-description"></p>
-
+        <p>Title:</p>
+        <p id="item-title"></p>
+        <p>Description:</p>
+        <p id="item-description"></p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
