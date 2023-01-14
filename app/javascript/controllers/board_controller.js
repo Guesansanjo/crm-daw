@@ -157,6 +157,19 @@ export default class extends Controller {
 
   }
 
+
+  showItemModal (){
+    document.getElementById('try').click();
+  }
+  renderItemInfo(itemId){
+    axios.get(`/api/items/${itemId}`,{}, {headers: this.HEADERS}).then((response) => {
+
+      document.getElementById('item-title').textContent = get(response, 'data.data.attributes.title');
+      document.getElementById('item-description').textContent = get(response, 'data.data.attributes.description');
+    }); 
+  }
+
+
   buildKanban(boards) {
     new jKanban({
       element: `#${this.element.id}`, // selector of the kanban container
@@ -165,11 +178,9 @@ export default class extends Controller {
         enabled: true, // add a button to board for easy item creation                                     // position the button on footer
       },
 click: (el) => {
-  document.getElementById('try').click();
+  this.showItemModal();
+  this.renderItemInfo(el.dataset.eid);
 
-  axios.get(`/api/items/${el.dataset.eid}`,{}, {headers: this.HEADERS}).then((response) => {
-  console.log('response: ', response);
-  }); 
 },
 
       buttonClick: (el, boardId) => {

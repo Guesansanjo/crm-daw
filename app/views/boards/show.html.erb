@@ -2,7 +2,8 @@
   data-board-lists-url = "<%= board_lists_path(@board) %>"
   data-list-positions-api-url = "<%= api_board_list_positions_path(@board) %>"
     data-item-positions-api-url = "<%= api_item_positions_path %>"
-   id="board" style="overflow-x: scroll;" ></div>
+   id="board" style="overflow-x: scroll;" >
+   </div>
 
 
 <!-- Button trigger modal -->
@@ -18,7 +19,13 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
+        
+<p>Title:</p>
+<p id="item-title"></p>
+
+<p>Description:</p>
+<p id="item-description"></p>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
