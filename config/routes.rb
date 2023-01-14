@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     end
     resources :item_positions, only: :update, controller: 'item_positions'
     put 'item_positions', to: 'item_positions#update'
- 
+
     resources :items, only: :show
   end
 end

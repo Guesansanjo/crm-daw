@@ -62,8 +62,7 @@ gem 'rubocop-rails', '~> 2.17', '>= 2.17.3'
 gem 'rubocop-rspec', '~> 2.16'
 gem 'solargraph', '~> 0.47.2'
 
+gem 'activerecord-import'
 gem 'importmap-rails', '~> 1.1'
 gem 'jsonapi-serializer'
-gem 'activerecord-import'
 gem 'rack-cors'
-
