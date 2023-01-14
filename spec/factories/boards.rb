@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :board do
-    name { 'MyString' }
-    user { nil }
+    name { Faker::Lorem.word }
+    user 
   end
 end

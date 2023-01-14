@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe 'Items', type: :request do
   let(:user) { create(:user) }
   let(:board) { create(:board, user:) }
-  let(:list) { create(:list, board:) }
+  let(:list) { create(:list, board:) } 
   before do
     sign_in user
   end
@@ -42,7 +42,7 @@ RSpec.describe 'Items', type: :request do
       it 'does not create a new board and renders new' do
         expect do
           post list_items_path(list), params: {
-            list: {
+            item: {
               title: '',
               description: ''
             }

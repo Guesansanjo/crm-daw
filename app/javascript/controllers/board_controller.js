@@ -164,6 +164,14 @@ export default class extends Controller {
       itemAddOptions: {
         enabled: true, // add a button to board for easy item creation                                     // position the button on footer
       },
+click: (el) => {
+  document.getElementById('try').click();
+
+  axios.get(`/api/items/${el.dataset.eid}`,{}, {headers: this.HEADERS}).then((response) => {
+  console.log('response: ', response);
+  }); 
+},
+
       buttonClick: (el, boardId) => {
         Turbo.visit(`/lists/${boardId}/items/new`);
       },

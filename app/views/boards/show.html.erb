@@ -6,11 +6,9 @@
 
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button>
 
-<%= button_tag "info" , class:"btn btn-primary" , data:{"bs-toggle": "modal" , "bs-target": "#exampleModal"} %>
+
+<%= button_tag "" ,id:"try", class:"btn btn-primary d-none" ,data:{"bs-toggle": "modal" , "bs-target": "#exampleModal"} %>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
