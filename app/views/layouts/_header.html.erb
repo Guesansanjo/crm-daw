@@ -19,19 +19,16 @@
         <%end %>
       </a>
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-
         <% if controller_name ==  "boards" && action_name == "show" %>
-            <%= link_to "New List",new_board_list_path(@board), class:"nav-link px-2 link-dark" %>
+          <%= link_to "New List",new_board_list_path(@board), class:"nav-link px-2 link-dark" %>
         <% else %>
-            <%= link_to "New Board", new_board_path , class:"nav-link px-2 link-dark" %>
+          <%= link_to "New Board", new_board_path , class:"nav-link px-2 link-dark" %>
         <% end %>
         <li><a href="#" class="nav-link px-2 link-dark">Inventory</a></li>
         <li><a href="#" class="nav-link px-2 link-dark">Customers</a></li>
-        
         <%= link_to "Log out",destroy_user_session_path ,data:{"turbo-method": :delete} , class:"nav-link px-2 link-dark"  %>
         <%= link_to 'Delete', destroy_user_session_path , data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }  , class:"nav-link px-2 link-dark" %>
       </ul>
     </div>
   </div>
 </header>
- 

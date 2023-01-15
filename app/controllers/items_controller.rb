@@ -36,14 +36,14 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @list = board.lists.find(params[:id])
-    @list.destroy
+    @item = list.items.find(params[:id])
+    @item.destroy
 
     respond_to do |format|
       format.json do
-        render json: {}, status: 200
-      end
+      render json: {}, status: 200
     end
+  end
   end
 
   private

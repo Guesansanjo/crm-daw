@@ -28,6 +28,7 @@ export default class extends Controller {
     button.classList.add("btn-xs");
     button.classList.add("mr-2");
     button.textContent = "x";
+  
     button.addEventListener("click", (e) => {
       e.preventDefault();
       console.log("button clcicked with boardId: ", boardId);
@@ -40,6 +41,8 @@ export default class extends Controller {
           Turbo.visit(window.location.href);
         });
     });
+
+
     return button;
   }
 
@@ -177,6 +180,22 @@ export default class extends Controller {
         );
 
         document.getElementById("item-edit-link").href = `/lists/${get(response,'data.data.attributes.list_id')}/items/${itemId}/edit`;
+
+
+ 
+        document.getElementById("item-delete-link").addEventListener("click", (e) => {
+          e.preventDefault();
+    
+          axios
+            .delete(`/lists/${get(response,'data.data.attributes.list_id')}/items/${itemId}`, {
+              headers: this.HEADERS,
+            })
+            .then((_) => {
+              Turbo.visit(window.location.href);
+            });
+        });
+
+
       });
   }
 

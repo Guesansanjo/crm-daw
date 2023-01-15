@@ -21,7 +21,7 @@
         <p id="item-description"></p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <%= link_to "Delete", "" ,id:"item-delete-link", class:"btn btn-danger"  ,data:{"turbo-method": :delete} %>
         <%= link_to "Edit", "" ,id:"item-edit-link", class:"btn btn-primary" %>
       </div>
     </div>
