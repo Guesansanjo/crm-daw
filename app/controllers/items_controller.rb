@@ -41,9 +41,9 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       format.json do
-      render json: {}, status: 200
+        render json: {}, status: 200
+      end
     end
-  end
   end
 
   private

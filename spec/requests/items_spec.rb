@@ -6,7 +6,7 @@ RSpec.describe 'Items', type: :request do
   let(:user) { create(:user) }
   let(:board) { create(:board, user:) }
   let(:list) { create(:list, board:) }
-  let(:item) { create(:item, list: list)}
+  let(:item) { create(:item, list:) }
   before do
     sign_in user
   end
