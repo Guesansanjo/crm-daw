@@ -175,6 +175,8 @@ export default class extends Controller {
           response,
           "data.data.attributes.description"
         );
+
+        document.getElementById("item-edit-link").href = `/lists/${get(response,'data.data.attributes.list_id')}/items/${itemId}/edit`;
       });
   }
 

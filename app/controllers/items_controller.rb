@@ -22,14 +22,14 @@ class ItemsController < ApplicationController
 
   def edit
     @should_render_header = true
-    @list = board.lists.find(params[:id])
+    @item = list.items.find(params[:id])
   end
 
   def update
-    @list = board.lists.find(params[:id])
+    @item = list.items.find(params[:id])
 
-    if @list.update(list_params)
-      redirect_to board_path(board)
+    if @item.update(item_params)
+      redirect_to board_path(list.board)
     else
       render :edit
     end
