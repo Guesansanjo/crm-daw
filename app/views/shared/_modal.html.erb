@@ -1,0 +1,23 @@
+<!-- Button trigger modal -->
+<%= button_tag "" ,id:"try", class:"btn btn-primary d-none" ,data:{"bs-toggle": "modal" , "bs-target": "#exampleModal"} %>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Title:</p>
+        <p id="item-title"></p>
+        <p>Description:</p>
+        <p id="item-description"></p>
+      </div>
+      <div class="modal-footer">
+        <%= link_to "Delete", "" ,id:"item-delete-link", class:"btn btn-danger"  ,data:{"turbo-method": :delete} %>
+        <%= link_to "Edit", "" ,id:"item-edit-link", class:"btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>

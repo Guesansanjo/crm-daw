@@ -11,11 +11,14 @@ Rails.application.routes.draw do
 
   resources :boards do
     resources :lists, except: :show
+    resources :board_users, except: :show
   end
 
   resources :lists do
     resources :items
   end
+
+  
 
   namespace :api do
     resources :boards do

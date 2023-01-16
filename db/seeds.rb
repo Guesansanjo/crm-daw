@@ -10,6 +10,11 @@
 
 user = User.create(email: 'jus@gmail.com', password: 'password')
 
+
+10.times do
+  User.create(email: Faker::Internet.email, password: "password") 
+end
+
 5.times do |i|
   Board.create(user:, name: "Board #{i + 1}")
 end
