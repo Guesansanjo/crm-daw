@@ -10,9 +10,8 @@
 
 user = User.create(email: 'jus@gmail.com', password: 'password')
 
-
 10.times do
-  User.create(email: Faker::Internet.email, password: "password") 
+  User.create(email: Faker::Internet.email, password: 'password')
 end
 
 5.times do |i|

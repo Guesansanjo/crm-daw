@@ -11,14 +11,12 @@ Rails.application.routes.draw do
 
   resources :boards do
     resources :lists, except: :show
-    resources :board_users, only: [:new, :create]
+    resources :board_users, only: %i[new create]
   end
 
   resources :lists do
     resources :items
   end
-
-  
 
   namespace :api do
     resources :boards do
