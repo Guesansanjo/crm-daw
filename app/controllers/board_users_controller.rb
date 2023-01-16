@@ -15,7 +15,7 @@ class BoardUsersController < ApplicationController
     user_ids_to_destroy = board_user_ids - user_ids
 
     BoardUser.where(board:, user_id: user_ids_to_destroy).delete_all
-    users_to_assign = User.where(id: user_ids)
+    users_to_assign = User.where(id: user_ids).where.not(id: board.reload.members.ids)
     board.members << users_to_assign
     redirect_to board_path(board)
   end

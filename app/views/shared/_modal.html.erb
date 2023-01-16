@@ -14,6 +14,13 @@
         <p>Description:</p>
         <p id="item-description"></p>
       </div>
+      <div>
+        <%= link_to "Assign member" , "" ,class:"" , id:"item-assign-member-link"%>
+        <div>
+          <p>members</p>
+          <ul id="item-members-list"></ul>
+        </div>
+      </div>
       <div class="modal-footer">
         <%= link_to "Delete", "" ,id:"item-delete-link", class:"btn btn-danger"  ,data:{"turbo-method": :delete} %>
         <%= link_to "Edit", "" ,id:"item-edit-link", class:"btn btn-primary" %>
