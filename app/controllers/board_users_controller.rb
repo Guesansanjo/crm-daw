@@ -10,48 +10,25 @@ class BoardUsersController < ApplicationController
     @board_user = board.board_users.new
   end
 
-  def edit
-    @should_render_header = true
-    authorize board
-  end
 
-  def show
-    @should_render_header = true
-    authorize board
-  end
 
+ 
   def create
-    @board = Board.new(board_params.merge(user: current_user))
+  board_user_ids = board.members.where.not(id: board.user_id).ids
+  user_ids_to_destroy = board_user_ids - user_ids
 
-    if @board.save
-      redirect_to root_path
-    else
-      render :new
-    end
+  BoardUser.where(board: board, user_id: user_ids_to_destroy).delete_all
+  users_to_assign = User.where(id: user_ids)
+  board.members << users_to_assign
+  redirect_to board_path(board)
   end
 
-  def update
-    authorize board
-
-    if board.update(board_params)
-      redirect_to root_path
-    else
-      render :edit
-    end
-  end
-
-  def destroy
-    authorize board
-
-    board.destroy
-
-    redirect_to root_path
-  end
+ 
 
   private
 
-  def board_params
-    params.require(:board).permit(:name)
+  def user_ids
+    params[:user_ids].map(&:to_i).reject(&:zero?)
   end
 
   def board

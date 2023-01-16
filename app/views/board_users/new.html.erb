@@ -1,20 +1,22 @@
-<%= form_with model: [@board,@board_user] , local: true , class: "form-control" do |f|%>
+<%= form_with   url: board_board_users_path(@board),scope:nil,local: true , class: "form-control" do |f|%>
   <div>
     <h3>New board member</h3>
     <p> this adds or deletes a Board member</p>
   </div>
   <div class="list-group">
     <% User.find_each do |user| %>
-      <label class="list-group-item">
-        <input class="form-check-input me-1" type="checkbox" value="">
-        <%= user.email %>
-      </label>
+      <%= f.label :user_ids, class: "list-group-item" do %>
+        <label class="list-group-item">
+          <%= f.check_box :user_ids, {multiple: true, checked: @board.members.include?(user), disabled: @board.user == user ,class: "form-check-input me-1"}, user.id  %>
+          <%= user.email %>
+        </label>
+      <% end %>
     <% end %>
   </div>
   <div class="actions">
     <%= link_to root_path  , class:"btn btn-sm btn-dark rounded-0 mt-3" do %>
       <span>Cancel</span>
     <% end %>
-    <%= f.submit "Submit" , class:"btn btn-sm btn-dark rounded-0 mt-3"%>
+    <%= f.submit "Assign memeber" , class:"btn btn-sm btn-dark rounded-0 mt-3"%>
   </div>
 <% end %>

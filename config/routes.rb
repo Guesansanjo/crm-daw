@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :boards do
     resources :lists, except: :show
-    resources :board_users, except: :show
+    resources :board_users, only: [:new, :create]
   end
 
   resources :lists do
