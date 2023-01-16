@@ -6,5 +6,5 @@ class ItemSerializer
 
   attribute :members do |object|
     UserSerializer.new(object.members).serializable_hash
-  end 
+  end
 end

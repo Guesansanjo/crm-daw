@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
 
   resources :items do
-    resources :item_members, only: [:new , :create]
+    resources :item_members, only: %i[new create]
   end
 
   resources :lists do
