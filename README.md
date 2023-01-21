@@ -97,3 +97,7 @@ https://stevepolito.design/blog/
 
 sacar los path bundle exec rails routes -c boards
 importante
+
+pasar values de front con stimulusjs para que lea axios
+
+https://stimulus.hotwired.dev/reference/values

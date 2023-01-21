@@ -1,8 +1,10 @@
-<div data-controller="board">
-
 <div>
-<p>hello#show</p>
-<div id="board"></div>
+  <%= link_to "+ Add member" ,new_board_board_user_path(@board) , class:"btn btn-success"%>
 </div>
-
+<div data-controller ="board" data-api-url = "<%= api_board_lists_path(@board) %>"
+  data-board-lists-url = "<%= board_lists_path(@board) %>"
+  data-list-positions-api-url = "<%= api_board_list_positions_path(@board) %>"
+    data-item-positions-api-url = "<%= api_item_positions_path %>"
+   id="board" style="overflow-x: scroll;" >
 </div>
+<%= render "shared/modal" %>

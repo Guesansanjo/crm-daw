@@ -1,0 +1,26 @@
+<div class = "container">
+  <%= form_with model: [board,list], local: true , class: "form-control" do |f|%>
+    <div>
+      <% if @list.new_record? %>
+        <h3>New List</h3>
+        <p> this creates a List</p>
+      <% else %>
+        <h3>Edit List <%= list.title %> </h3>
+        <p> this edits List </p>
+      <% end %>
+    </div>
+    <div>
+      <%= f.label :title, class:""%>
+      <div>
+        <%= f.text_field :title , class:"form-control-sm"%>
+      </div>
+    </div>
+    <% link_to "Cancel" , root_path , class: ""%>
+    <div class="actions">
+      <%= link_to root_path  , class:"btn btn-sm btn-dark rounded-0 mt-3" do %>
+        <span>Cancel</span>
+      <% end %>
+      <%= f.submit "Submit" , class:"btn btn-sm btn-dark rounded-0 mt-3"%>
+    </div>
+  <% end %>
+</div>

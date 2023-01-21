@@ -2,9 +2,8 @@
 // Run that command whenever you add a new controller or create them with
 // ./bin/rails generate stimulus controllerName
 
-import { application } from "./application"
-
+import { application } from "./application";
 
 // Saber hacer conexion bien o F para conectar API js
-import BoardController from "./board_controller"
-application.register("board", BoardController)
+import BoardController from "./board_controller";
+application.register("board", BoardController);

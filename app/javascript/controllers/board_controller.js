@@ -1,162 +1,241 @@
-
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
+import { Turbo } from "@hotwired/turbo-rails";
+import axios from "axios";
+import { get, map } from "lodash-es";
 
 export default class extends Controller {
-  connect() {
+  HEADERS = { ACCEPT: "application/json" };
 
-    const boards = [
-        {
-            "id"    : "board-id-1",
-            "title" : "Board Title",
-            "item"  : [
-                {
-                    "id"      : "item-id-1",
-                    "title"   : "Item 1",
-                    "username": "username1"
-                },
-                {
-                    "id"      : "item-id-2",
-                    "title"   : "Item 2",
-                    "username": "username2"
-                }
-            ]
-        }, {
-            "id"    : "board-id-1",
-            "title" : "Board Title",
-            "item"  : [
-                {
-                    "id"      : "item-id-1",
-                    "title"   : "Item 1",
-                    "username": "username1"
-                },
-                {
-                    "id"      : "item-id-2",
-                    "title"   : "Item 2",
-                    "username": "username2"
-                }
-            ]
-        }, {
-            "id"    : "board-id-1",
-            "title" : "Board Title",
-            "item"  : [
-                {
-                    "id"      : "item-id-1",
-                    "title"   : "Item 1",
-                    "username": "username1"
-                },
-                {
-                    "id"      : "item-id-2",
-                    "title"   : "Item 2",
-                    "username": "username2"
-                }
-            ]
-        }, {
-            "id"    : "board-id-1",
-            "title" : "Board Title",
-            "item"  : [
-                {
-                    "id"      : "item-id-1",
-                    "title"   : "Item 1",
-                    "username": "username1"
-                },
-                {
-                    "id"      : "item-id-2",
-                    "title"   : "Item 2",
-                    "username": "username2"
-                }
-            ]
-        }, {
-            "id"    : "board-id-1",
-            "title" : "Board Title",
-            "item"  : [
-                {
-                    "id"      : "item-id-1",
-                    "title"   : "Item 1",
-                    "username": "username1"
-                },
-                {
-                    "id"      : "item-id-2",
-                    "title"   : "Item 2",
-                    "username": "username2"
-                }
-            ]
-        }, {
-            "id"    : "board-id-1",
-            "title" : "Board Title",
-            "item"  : [
-                {
-                    "id"      : "item-id-1",
-                    "title"   : "Item 1",
-                    "username": "username1"
-                },
-                {
-                    "id"      : "item-id-2",
-                    "title"   : "Item 2",
-                    "username": "username2"
-                }
-            ]
-        }, {
-            "id"    : "board-id-1",
-            "title" : "Board Title",
-            "item"  : [
-                {
-                    "id"      : "item-id-1",
-                    "title"   : "Item 1",
-                    "username": "username1"
-                },
-                {
-                    "id"      : "item-id-2",
-                    "title"   : "Item 2",
-                    "username": "username2"
-                }
-            ]
-        }, {
-            "id"    : "board-id-1",
-            "title" : "Board Title",
-            "item"  : [
-                {
-                    "id"      : "item-id-1",
-                    "title"   : "Item 1",
-                    "username": "username1"
-                },
-                {
-                    "id"      : "item-id-2",
-                    "title"   : "Item 2",
-                    "username": "username2"
-                }
-            ]
-        }
-    ];
-    
-    var kanban = new jKanban({
-        element          : '#board',                                           // selector of the kanban container
-        boards           : boards,                                           // json of boards
-        itemAddOptions: {
-            enabled: false,                                              // add a button to board for easy item creation
-            content: '+',                                                // text or html content of the board button   
-            class: 'kanban-title-button btn btn-default btn-xs',         // default class of the button
-            footer: false                                                // position the button on footer
-        },    
-        itemHandleOptions: {
-            enabled             : false,                                 // if board item handle is enabled or not
-            handleClass         : "item_handle",                         // css class for your custom item handle
-            customCssHandler    : "drag_handler",                        // when customHandler is undefined, jKanban will use this property to set main handler class
-            customCssIconHandler: "drag_handler_icon",                   // when customHandler is undefined, jKanban will use this property to set main icon handler class. If you want, you can use font icon libraries here
-            customHandler       : "<span class='item_handle'>+</span> %title% "  // your entirely customized handler. Use %title% to position item title 
-                                                                                 // any key's value included in item collection can be replaced with %key%
-        },
-        click            : function (el) {},                             // callback when any board's item are clicked
-        context          : function (el, event) {},                      // callback when any board's item are right clicked
-        dragEl           : function (el, source) {},                     // callback when any board's item are dragged
-        dragendEl        : function (el) {},                             // callback when any board's item stop drag
-        dropEl           : function (el, target, source, sibling) {},    // callback when any board's item drop in a board
-        dragBoard        : function (el, source) {},                     // callback when any board stop drag
-        dragendBoard     : function (el) {},                             // callback when any board stop drag
-        buttonClick      : function(el, boardId) {},                     // callback when the board's button is clicked
-        propagationHandlers: [],                                         // the specified callback does not cancel the browser event. possible values: "click", "context"
+  getHeaderTitles() {
+    return Array.from(document.getElementsByClassName("kanban-title-board"));
+  }
+
+  getHeaders() {
+    return Array.from(document.getElementsByClassName("kanban-board-header"));
+  }
+
+  cursorifyHeaderTitle() {
+    this.getHeaderTitles().forEach((headerTitle) => {
+      headerTitle.classList.add("cursor-pointer");
+    });
+  }
+
+  buildBoardDeleteButton(boardId) {
+    const button = document.createElement("button");
+    button.classList.add("kanban-title-button");
+    button.classList.add("btn");
+    button.classList.add("btn-default");
+    button.classList.add("btn-xs");
+    button.classList.add("mr-2");
+    button.textContent = "x";
+  
+    button.addEventListener("click", (e) => {
+      e.preventDefault();
+      console.log("button clcicked with boardId: ", boardId);
+
+      axios
+        .delete(`${this.element.dataset.boardListsUrl}/${boardId}`, {
+          headers: this.HEADERS,
+        })
+        .then((_) => {
+          Turbo.visit(window.location.href);
+        });
     });
 
-    console.log('kanban', kanban);
 
-}
+    return button;
+  }
+
+  addHeaderDeleteButtons(boards) {
+    this.getHeaders().forEach((header, index) => {
+      header.appendChild(this.buildBoardDeleteButton(boards[index].id));
+    });
+  }
+
+  addLinkToHeaderTitle(boards) {
+    this.getHeaderTitles().forEach((headerTitle, index) => {
+      headerTitle.addEventListener("click", () => {
+        Turbo.visit(
+          `${this.element.dataset.boardListsUrl}/${boards[index].id}/edit`
+        );
+      });
+    });
+  }
+
+  connect() {
+    axios
+      .get(this.element.dataset.apiUrl, { headers: this.HEADERS })
+      .then((response) => {
+        this.buildKanban(this.buildBoards(response["data"]));
+        this.cursorifyHeaderTitle();
+        this.addLinkToHeaderTitle(this.buildBoards(response["data"]));
+        this.addHeaderDeleteButtons(this.buildBoards(response["data"]));
+      });
+  }
+
+  buildClassList() {
+    return `text-white, bg-primary`;
+  }
+
+  buildItems(items) {
+    return map(items, (item) => {
+      return {
+        id: get(item, "id"),
+        title: get(item, "attributes.title"),
+        class: this.buildClassList(),
+        list_id: get(item, "attributes.list_id"),
+      };
+    });
+  }
+
+  buildBoards(boardsData) {
+    return map(boardsData["data"], (board) => {
+      return {
+        id: get(board, "id"),
+        title: get(board, "attributes.title"),
+        class: this.buildClassList(),
+        item: this.buildItems(get(board, "attributes.items.data")),
+      };
+    });
+  }
+
+  updateListPosition(el) {
+    axios
+      .put(
+        `${this.element.dataset.listPositionsApiUrl}/${el.dataset.id}`,
+        {
+          position: el.dataset.order - 1,
+        },
+        {
+          headers: this.HEADERS,
+        }
+      )
+      .then((response) => {
+        console.log("response: ", response);
+      });
+  }
+
+  buildItemData(items) {
+    return map(items, (item) => {
+      return {
+        id: item.dataset.eid,
+        position: item.dataset.position,
+        list_id: item.dataset.listId,
+      };
+    });
+  }
+
+  itemPositionApiCall(itemsData) {
+    axios
+      .put(
+        this.element.dataset.itemPositionsApiUrl,
+        {
+          items: itemsData,
+        },
+        {
+          headers: this.HEADERS,
+        }
+      )
+      .then((response) => {
+        console.log("response: ", response);
+      });
+  }
+
+  updateItemPositioning(target, source) {
+    const targetItems = Array.from(
+      target.getElementsByClassName("kanban-item")
+    );
+    const sourceItems = Array.from(
+      target.getElementsByClassName("kanban-item")
+    );
+
+    targetItems.forEach((item, index) => {
+      item.dataset.position = index;
+      item.dataset.listId = target.closest(".kanban-board").dataset.id;
+    });
+
+    sourceItems.forEach((item, index) => {
+      item.dataset.position = index;
+      item.dataset.listId = target.closest(".kanban-board").dataset.id;
+    });
+
+    this.itemPositionApiCall(this.buildItemData(targetItems));
+    this.itemPositionApiCall(this.buildItemData(sourceItems));
+  }
+
+  showItemModal() {
+    document.getElementById("try").click();
+  }
+  renderItemInfo(itemId) {
+    axios
+      .get(`/api/items/${itemId}`, {}, { headers: this.HEADERS })
+      .then((response) => {
+        document.getElementById("item-title").textContent = get(
+          response,
+          "data.data.attributes.title"
+        );
+        document.getElementById("item-description").textContent = get(
+          response,
+          "data.data.attributes.description"
+        );
+
+        document.getElementById("item-edit-link").href = `/lists/${get(response,'data.data.attributes.list_id')}/items/${itemId}/edit`;
+          document.getElementById("item-assign-member-link").href =`/items/${get(response,'data.data.id')}/item_members/new`;
+
+
+
+          const membersList = map(get(response, 'data.data.attributes.members.data'), (memberData) => {
+          const listItem = document.createElement('li');
+          listItem.textContent = memberData.attributes.email;
+          return listItem;
+          });
+
+
+      
+          document.getElementById('item-members-list').innerHTML = null;
+
+
+          membersList.forEach((memberList) => {
+            document.getElementById('item-members-list').appendChild(memberList);
+          });
+
+        document.getElementById("item-delete-link").addEventListener("click", (e) => {
+          e.preventDefault();
+    
+          axios
+            .delete(`/lists/${get(response,'data.data.attributes.list_id')}/items/${itemId}`, {
+              headers: this.HEADERS,
+            })
+            .then((_) => {
+              Turbo.visit(window.location.href);
+            });
+        });
+
+
+      });
+  }
+
+  buildKanban(boards) {
+    new jKanban({
+      element: `#${this.element.id}`, // selector of the kanban container
+      boards: boards, // json of boards
+      itemAddOptions: {
+        enabled: true, // add a button to board for easy item creation                                     // position the button on footer
+      },
+      click: (el) => {
+        this.showItemModal();
+        this.renderItemInfo(el.dataset.eid);
+      },
+
+      buttonClick: (el, boardId) => {
+        Turbo.visit(`/lists/${boardId}/items/new`);
+      },
+      dragendBoard: (el, boardId) => {
+        this.updateListPosition(el);
+      },
+      dropEl: (el, target, source, sibling) => {
+        this.updateItemPositioning(target, source);
+      },
+    });
+  }
 }

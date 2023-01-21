@@ -36,8 +36,8 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 6.2'
   gem 'faker'
   gem 'pry-rails', '~> 0.3.9'
-  gem 'rspec-rails', '~> 6.0', '>= 6.0.1'
   gem 'rails-erd'
+  gem 'rspec-rails', '~> 6.0', '>= 6.0.1'
 end
 
 group :development do
@@ -62,6 +62,7 @@ gem 'rubocop-rails', '~> 2.17', '>= 2.17.3'
 gem 'rubocop-rspec', '~> 2.16'
 gem 'solargraph', '~> 0.47.2'
 
-
-gem "importmap-rails", "~> 1.1"
+gem 'activerecord-import'
+gem 'importmap-rails', '~> 1.1'
 gem 'jsonapi-serializer'
+gem 'rack-cors'
