@@ -28,20 +28,22 @@ export default class extends Controller {
     button.classList.add("btn-xs");
     button.classList.add("mr-2");
     button.textContent = "x";
-  
+
     button.addEventListener("click", (e) => {
       e.preventDefault();
       console.log("button clcicked with boardId: ", boardId);
 
-      axios
-        .delete(`${this.element.dataset.boardListsUrl}/${boardId}`, {
-          headers: this.HEADERS,
-        })
-        .then((_) => {
-          Turbo.visit(window.location.href);
-        });
+      const alert_message = "Do you wanna delete this list ?.";
+      if (window.confirm(alert_message)) {
+        axios
+          .delete(`${this.element.dataset.boardListsUrl}/${boardId}`, {
+            headers: this.HEADERS,
+          })
+          .then((_) => {
+            Turbo.visit(window.location.href);
+          });
+      }
     });
-
 
     return button;
   }
@@ -179,39 +181,52 @@ export default class extends Controller {
           "data.data.attributes.description"
         );
 
-        document.getElementById("item-edit-link").href = `/lists/${get(response,'data.data.attributes.list_id')}/items/${itemId}/edit`;
-          document.getElementById("item-assign-member-link").href =`/items/${get(response,'data.data.id')}/item_members/new`;
+        document.getElementById("item-edit-link").href = `/lists/${get(
+          response,
+          "data.data.attributes.list_id"
+        )}/items/${itemId}/edit`;
+        document.getElementById("item-assign-member-link").href = `/items/${get(
+          response,
+          "data.data.id"
+        )}/item_members/new`;
 
+        const membersList = map(
+          get(response, "data.data.attributes.members.data"),
+          (memberData) => {
+            const listItem = document.createElement("li");
+            listItem.textContent = memberData.attributes.email;
+            return listItem;
+          }
+        );
 
+        document.getElementById("item-members-list").innerHTML = null;
 
-          const membersList = map(get(response, 'data.data.attributes.members.data'), (memberData) => {
-          const listItem = document.createElement('li');
-          listItem.textContent = memberData.attributes.email;
-          return listItem;
-          });
-
-
-      
-          document.getElementById('item-members-list').innerHTML = null;
-
-
-          membersList.forEach((memberList) => {
-            document.getElementById('item-members-list').appendChild(memberList);
-          });
-
-        document.getElementById("item-delete-link").addEventListener("click", (e) => {
-          e.preventDefault();
-    
-          axios
-            .delete(`/lists/${get(response,'data.data.attributes.list_id')}/items/${itemId}`, {
-              headers: this.HEADERS,
-            })
-            .then((_) => {
-              Turbo.visit(window.location.href);
-            });
+        membersList.forEach((memberList) => {
+          document.getElementById("item-members-list").appendChild(memberList);
         });
 
+        document
+          .getElementById("item-delete-link")
+          .addEventListener("click", (e) => {
+            e.preventDefault();
+            const alert_message = "Do you wanna delete this.";
 
+            if (window.confirm(alert_message)) {
+              axios
+                .delete(
+                  `/lists/${get(
+                    response,
+                    "data.data.attributes.list_id"
+                  )}/items/${itemId}`,
+                  {
+                    headers: this.HEADERS,
+                  }
+                )
+                .then((_) => {
+                  Turbo.visit(window.location.href);
+                });
+            }
+          });
       });
   }
 

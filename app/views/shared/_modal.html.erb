@@ -22,7 +22,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <%= link_to "Delete", "" ,id:"item-delete-link", class:"btn btn-danger"  ,data:{"turbo-method": :delete} %>
+        <%= link_to "Delete", "" ,id:"item-delete-link", class:"btn btn-danger" , data: { "turbo-method": :delete, "turbo-confirm": 'Are you sure?' }  %>
         <%= link_to "Edit", "" ,id:"item-edit-link", class:"btn btn-primary" %>
       </div>
     </div>
