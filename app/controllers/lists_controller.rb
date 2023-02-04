@@ -14,6 +14,7 @@ class ListsController < ApplicationController
     @list = board.lists.new(list_params)
 
     if @list.save
+      flash[:notice] = "List created successfully"
       redirect_to board_path(board)
     else
       render :new
@@ -29,6 +30,7 @@ class ListsController < ApplicationController
     @list = board.lists.find(params[:id])
 
     if @list.update(list_params)
+      flash[:notice] = "List updated successfully"
       redirect_to board_path(board)
     else
       render :edit
@@ -37,6 +39,7 @@ class ListsController < ApplicationController
 
   def destroy
     @list = board.lists.find(params[:id])
+    flash[:alert] = "List deleted successfully"
     @list.destroy
 
     respond_to do |format|

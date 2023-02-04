@@ -11,9 +11,10 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
   <body>
+    <% if flash.any?%>
+      <%= render "shared/flashes"%>
+    <% end%>
     <%= render "layouts/header" if @should_render_header%>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>

@@ -14,6 +14,7 @@ class ItemsController < ApplicationController
     @item = list.items.new(item_params)
 
     if @item.save
+      flash[:notice] = "Item created successfully"
       redirect_to board_path(list.board)
     else
       render :new
@@ -29,6 +30,7 @@ class ItemsController < ApplicationController
     @item = list.items.find(params[:id])
 
     if @item.update(item_params)
+      flash[:notice] = "Item updated successfully"
       redirect_to board_path(list.board)
     else
       render :edit
@@ -37,6 +39,7 @@ class ItemsController < ApplicationController
 
   def destroy
     @item = list.items.find(params[:id])
+    flash[:alert] = "Item destroyed successfully"
     @item.destroy
 
     respond_to do |format|

@@ -18,8 +18,8 @@
         <%= link_to root_path,class: "" do  %>     <svg class="alpine mt-3" width="60" height="60" role="img" aria-label="alpine"><use xlink:href="#alpine"></use></svg>
         <%end %>
       </a>
-      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <% if controller_name ==  "boards" && action_name == "show" %>
+      <ul class="nav col-12 col-lg-auto me-md-auto mb-2 justify-content-center mb-md-0">
+        <% if controller_name ==  "boards" && action_name == "show" ||  controller_name ==  "lists" && action_name == "new" ||  controller_name ==  "board_users" && action_name == "new"   %>
           <%= link_to "New List",new_board_list_path(@board), class:"nav-link px-2 link-dark" %>
         <% else %>
           <%= link_to "New Board", new_board_path , class:"nav-link px-2 link-dark" %>

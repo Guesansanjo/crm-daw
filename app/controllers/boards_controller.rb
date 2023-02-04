@@ -24,7 +24,9 @@ class BoardsController < ApplicationController
     @board = Board.new(board_params.merge(user: current_user))
 
     if @board.save
+      flash[:notice] = "Board created successfully"
       redirect_to root_path
+    
     else
       render :new
     end
@@ -44,7 +46,7 @@ class BoardsController < ApplicationController
     authorize board
 
     board.destroy
-
+    flash[:alert] = "Board deleted successfully"
     redirect_to root_path
   end
 

@@ -1,9 +1,9 @@
-<%= form_with   url: item_item_members_path(@item),scope:nil,local: true , class: "form-control" do |f|%>
-  <div>
+<%= form_with   url: item_item_members_path(@item),scope:nil,local: true do |f|%>
+  <div style="width:50%;  margin: auto;">
     <h3>New board member</h3>
     <p> this adds or deletes a Board member</p>
   </div>
-  <div class="list-group">
+  <div class="list-group" style="width:50%;  margin: auto;">
     <% @item.list.board.members.uniq.each do |user| %>
       <%= f.label :user_ids, class: "list-group-item" do %>
         <label class="list-group-item">

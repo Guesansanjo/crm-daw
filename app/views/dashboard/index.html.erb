@@ -1,6 +1,6 @@
 <div class="row">
   <% @boards.each do |board| %>
-    <div class="col-sm-2 ">
+    <div class="col-sm-2 p-4 m-4 ">
       <div class="card ">
         <div class="card-body">
           <h5 class="card-title"><%= link_to board.name, board_path(board),class:"nav-link px-2 link-dark" %></h5>
@@ -10,7 +10,6 @@
           <%= link_to board_path(board) ,data:{ turbo_method: :delete, turbo_confirm: 'Are you sure?'} , class:"btn btn-sm btn-danger rounded-0" do %>
             <span>delete</span>
           <% end %>
-          
         </div>
       </div>
     </div>

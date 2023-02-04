@@ -1,9 +1,9 @@
-<%= form_with   url: board_board_users_path(@board),scope:nil,local: true , class: "form-control" do |f|%>
+<%= form_with   url: board_board_users_path(@board),scope:nil,local: true  do |f|%>
   <div>
     <h3>New board member</h3>
     <p> this adds or deletes a Board member</p>
   </div>
-  <div class="list-group">
+  <div class="list-group" style="width:50%;  margin: auto;">
     <% User.find_each do |user| %>
       <%= f.label :user_ids, class: "list-group-item" do %>
         <label class="list-group-item">
