@@ -66,3 +66,5 @@ gem 'activerecord-import'
 gem 'importmap-rails', '~> 1.1'
 gem 'jsonapi-serializer'
 gem 'rack-cors'
+
+gem "dockerfile-rails", ">= 1.4", :group => :development

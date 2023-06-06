@@ -1,8 +1,10 @@
 import { Controller } from "@hotwired/stimulus";
 import { Turbo } from "@hotwired/turbo-rails";
-import axios from "axios";
 import { get, map } from "lodash-es";
+// Import @hotwired/stimulus
+import axios from 'axios';
 
+import jKanban from 'jkanban';
 export default class extends Controller {
   HEADERS = { ACCEPT: "application/json" };
 
@@ -231,7 +233,7 @@ export default class extends Controller {
   }
 
   buildKanban(boards) {
-    new jKanban({
+    var kanban = new jKanban({
       element: `#${this.element.id}`, // selector of the kanban container
       boards: boards, // json of boards
       itemAddOptions: {
@@ -252,5 +254,7 @@ export default class extends Controller {
         this.updateItemPositioning(target, source);
       },
     });
+ 
+    return kanban;
   }
 }

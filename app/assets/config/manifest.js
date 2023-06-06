@@ -1,4 +1,9 @@
 //= link_tree ../images
 //= link application.css
-//= link_tree ../../javascript .js
 //= link_tree ../../../vendor/javascript .js
+//= link_tree ../builds
+//= require crossvent
+//= require dragula
+//= require turbolinks
+//= require crossvent
+//= require jkanban

@@ -7,8 +7,13 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= favicon_link_tag asset_path("alpine-icon.ico") %>
-    <%= javascript_importmap_tags %>
+
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <script>
+  if (global === undefined) {
+    var global = window;
+  }
+</script>
   </head>
   <body>
     <% if flash.any?%>
